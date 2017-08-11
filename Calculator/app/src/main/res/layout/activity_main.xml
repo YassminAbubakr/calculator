@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.q1.calculator.MainActivity">
+
+    <TextView
+        style="@style/AppElements"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:text="Enter 2 numbers" />
+
+    <EditText
+        android:id="@+id/textbox_num1"
+        style="@style/AppElements"
+        android:layout_width="match_parent"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/textbox_num2"
+        style="@style/AppElements"
+        android:layout_width="match_parent"
+        android:inputType="number" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <Button
+        android:layout_width="0dp"
+        android:text="+"
+        style="@style/AppElements"
+        android:onClick="Add"
+        android:layout_weight="1"/>
+    <Button
+        android:layout_width="0dp"
+        android:text="-"
+        style="@style/AppElements"
+        android:onClick="Sub"
+        android:layout_weight="1"/>
+    <Button
+        android:layout_width="0dp"
+        android:text="*"
+        style="@style/AppElements"
+        android:onClick="Mul"
+        android:layout_weight="1"/>
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="/"
+        style="@style/AppElements"
+        android:layout_weight="1"
+        android:onClick="Div"/>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Result"
+            style="@style/AppElements"
+            android:onClick="CalculateResult"/>
+        <TextView
+            android:id="@+id/result_text_box"
+            style="@style/AppElements"
+            android:layout_width="wrap_content"
+            android:text="" />
+    </LinearLayout>
+</LinearLayout>
