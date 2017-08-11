@@ -10,11 +10,11 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    int result = 0;
-    boolean add = false;
-    boolean sub = false;
-    boolean div = false;
-    boolean mul = false;
+    double result = 0;
+    boolean add_ = false;
+    boolean sub_ = false;
+    boolean div_ = false;
+    boolean mul_ = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,54 +22,54 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void Add(View v) {
-        add = true;
-        sub = div = mul = false;
+    public void add(View v) {
+        add_ = true;
+        sub_ = div_ = mul_ = false;
     }
 
-    public void Div(View v) {
-        div = true;
-        sub = add = mul = false;
+    public void div(View v) {
+        div_ = true;
+        sub_ = add_ = mul_ = false;
     }
 
-    public void Sub(View v) {
-        sub = true;
-        add = div = mul = false;
+    public void sub(View v) {
+        sub_ = true;
+        add_ = div_ = mul_ = false;
     }
 
-    public void Mul(View v) {
-        mul = true;
-        sub = div = add = false;
+    public void mul(View v) {
+        mul_ = true;
+        sub_ = div_ = add_ = false;
 
     }
 
-    public void CalculateResult(View V) {
-        EditText number1 = (EditText) findViewById(R.id.textbox_num1);
+    public void calculateResult(View V) {
+        EditText number1 = (EditText) findViewById(R.id.et_number1);
         Editable num1 = number1.getText();
 
-        EditText number2 = (EditText) findViewById(R.id.textbox_num2);
+        EditText number2 = (EditText) findViewById(R.id.et_number2);
         Editable num2 = number2.getText();
-        if (add == true)
-            result = Integer.parseInt(num2.toString()) + Integer.parseInt(num1.toString());
-        else if (sub == true)
-            result = Integer.parseInt(num2.toString()) - Integer.parseInt(num1.toString());
-        else if (mul == true)
-            result = Integer.parseInt(num2.toString()) * Integer.parseInt(num1.toString());
-        else if (div == true)
-        {
-            if(Integer.parseInt(num2.toString())!=0)
-            result = Integer.parseInt(num1.toString()) / Integer.parseInt(num2.toString());
-            else
-            {
-                Toast.makeText(this,"You can't Divide By Zero",Toast.LENGTH_SHORT);
-                return;
+        if (add_ == true && num2.length() != 0 && num1.length() != 0)
+            result = Double.parseDouble(num1.toString()) + Double.parseDouble(num2.toString());
+        else if (sub_ == true && num2.length() != 0 && num1.length() != 0)
+            result = Double.parseDouble(num1.toString()) - Double.parseDouble(num2.toString());
+        else if (mul_ == true && num1.length() != 0 && num2.length() != 0)
+            result = Double.parseDouble(num2.toString()) * Double.parseDouble(num1.toString());
+        else if (div_ == true && num2.length() != 0 && num1.length() != 0) {
+            if (Double.parseDouble(num2.toString()) != 0)
+                result = Double.parseDouble(num1.toString()) / Double.parseDouble(num2.toString());
+            else {
+                Toast.makeText(this, "You can't Divide By Zero", Toast.LENGTH_SHORT).show();
             }
+        } else {
+            Toast.makeText(this,"Please Check That You Entered Both Numbers",Toast.LENGTH_SHORT).show();
+            return;
         }
-        Display();
+        display();
     }
 
-    public void Display() {
-        TextView res = (TextView) findViewById(R.id.result_text_box);
+    public void display() {
+        TextView res = (TextView) findViewById(R.id.tv_result);
         res.setText("" + result);
     }
 }
